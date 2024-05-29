@@ -1,0 +1,55 @@
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+<style>
+    body{
+        background-image: url("https://prep20202.usc.edu.co/pluginfile.php/1/theme_edumy/login_bg/1707333850/fondo-ingreso-aulas-2%20%281%29.jpg");
+    }
+    img	{
+        margin-bottom: 20px;
+    }
+
+    input{
+        margin-bottom: 20px;
+    }
+
+    .card-body{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6" style="display: flex; flex-direction: column; justify-content: center; height: 100vh">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <form method="POST">
+                        {% csrf_token %}
+                        <img src="https://i.ibb.co/k1JqpSz/logo-ftp.png" alt="logo" style="width:300px; max-width: 100%; border-radius:150px;">
+                        <div class="form-group">
+                            <!--<label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>-->
+                            <input type="text" class="form-control" id="user" name="user" placeholder="Nombre de Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                        </div>
+
+                        {% comment %} <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        </div> {% endcomment %}
+
+                        <button type="submit" class="btn btn-primary btn-lg ">Acceder</button>
+                        <hr>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

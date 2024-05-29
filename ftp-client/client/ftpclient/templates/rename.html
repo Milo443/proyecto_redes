@@ -1,0 +1,13 @@
+{% include "components\navbar.html" %}
+
+<div class="container">
+    <h1>Renombrar archivo</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="new_name">Nuevo nombre</label>
+            <input type="text" class="form-control" id="new_name" name="new_name" value="{{ file }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Renombrar</button>
+    </form>
+</div>
