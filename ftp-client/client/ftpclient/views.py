@@ -57,7 +57,7 @@ def download(request, file_name):
         password = request.session['password']
         ftp = FTP(ip_ftp)
         ftp.login(user, password)
-        ftp.cwd('~')
+        ftp.cwd('~/upload/')
         local_file_path = f'./{file_name}'
         ftp.retrbinary(f'RETR {file_name}', open(local_file_path, 'wb').write)
         ftp.quit()
@@ -73,7 +73,7 @@ def delete(request, file):
         password = request.session['password']
         ftp = FTP(ip_ftp)
         ftp.login(user, password)
-        ftp.cwd('~')
+        ftp.cwd('~/upload/')
         ftp.delete(file)
         ftp.quit()
     return redirect('/archivos/')
@@ -84,7 +84,7 @@ def rename(request, file):
         password = request.session['password']
         ftp = FTP(ip_ftp)
         ftp.login(user, password)
-        ftp.cwd('~')
+        ftp.cwd('~/upload/')
         if request.method == 'POST':
             new_name = request.POST.get('new_name')
             ftp.rename(file, new_name)
