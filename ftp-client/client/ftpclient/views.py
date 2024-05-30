@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 # Create your views here.
 
-ip_ftp ='192.168.20.18'
+ip_ftp ='192.168.43.246'
 
 def login(request):
     if request.method == 'POST':
