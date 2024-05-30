@@ -1,0 +1,70 @@
+{% include "components\navbar.html" %}
+
+<br>
+<div class="container-fluid text-center">
+    <div id="drop-area" style="width: 100%; height: 200px; background:#9b9b9b; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <i class="fas fa-upload"></i>
+        <br>
+        <span>Arrastra y suelta el archivo aquí</span>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'upload_directory' directory=directory %}" id="upload-form">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="file-input" name="file">
+                <label class="custom-file-label" for="file-input" id="file-label">Selecciona un archivo</label>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Upload</button>
+            </div>
+        </div>
+    </form>
+</div>
+    
+<script>
+    var dropArea = document.getElementById('drop-area');
+
+    // Prevenir el comportamiento predeterminado del navegador al arrastrar y soltar
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Resaltar el área de soltar cuando se arrastra un archivo sobre ella
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    // Desactivar el resaltado cuando se sale del área de soltar
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Manejar el evento de soltar
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    function highlight() {
+        dropArea.classList.add('highlight');
+    }
+
+    function unhighlight() {
+        dropArea.classList.remove('highlight');
+    }
+
+    function handleDrop(e) {
+        var dt = e.dataTransfer;
+        var files = dt.files;
+
+        // Actualizar el texto de la etiqueta con el nombre del archivo seleccionado
+        document.getElementById('file-label').textContent = files[0].name;
+
+        // Agregar el archivo al formulario
+        document.getElementById('file-input').files = files;
+    }
+</script>

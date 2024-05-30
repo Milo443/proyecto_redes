@@ -24,9 +24,21 @@ urlpatterns = [
     path('', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('archivos/', views.archivos, name='archivos'),
+
     path('upload/', views.upload, name='upload'),
+    path('upload_directory/<str:directory>', views.upload_directory, name='upload_directory'),
+
     path('download/<str:file_name>', views.download, name='download'),
+    path('download_files/<str:directory>/<str:file_name>', views.download_files, name='download_files'),
+
     path('delete/<str:file>', views.delete, name='delete'),
+    path('delete_directory/<str:directory>', views.delete_directory, name='delete_directory'),
+    path('delete_files/<str:directory>/<str:file>', views.delete_files, name='delete_files'),
+
     path('rename/<str:file>', views.rename, name='rename'),
+    path('create_directory/', views.create_directory, name='create_directory'),
+    #path('navigate/<str:directory>', views.navigate, name='navigate'),
+    path('directory/<str:directory>', views.directory, name='directory'),
+
 
 ]

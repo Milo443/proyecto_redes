@@ -4,7 +4,7 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center">
         <h1>Lista de archivos FTP</h1>
-        <a href="/upload" class="btn btn-success"><i class="fas fa-cloud-upload-alt"></i> Upload</a>
+        <a href="/upload_directory/{{directory}}" class="btn btn-success"><i class="fas fa-cloud-upload-alt"></i> Upload</a>
     </div>
     <table class="table">
         <thead class="bg-dark text-white">
@@ -21,8 +21,8 @@
                 <td><i class="fas fa-file"></i> {{ file }}</td>
                 <td>
                     
-                    <a href="/download/{{file}} " class="btn btn-primary"><i class="fas fa-download"></i> </a>
-                    <a href="/delete/{{file}}" class="btn btn-danger"><i class="fas fa-trash"></i> </a>
+                    <a href="/download_files/{{directory}}/{{file}} " class="btn btn-primary"><i class="fas fa-download"></i> </a>
+                    <a href="/delete_files/{{directory}}/{{file}}" class="btn btn-danger"><i class="fas fa-trash"></i> </a>
                     <a href="/rename/{{file}}" class="btn btn-warning"><i class="fas fa-edit"></i> </a>
                     {% comment %} <a href="" class="btn btn-primary">Download</a>
                     <a href="" class="btn btn-danger">Delete</a> {% endcomment %}
@@ -36,8 +36,8 @@
                    
                 </td>
                 <td>
-                    <a href="/directory/{{directory}}" class="btn btn-primary"><i class="fas fa-folder-open"></i> </a>
-                    <a href="/delete_directory/{{directory}}" class="btn btn-danger"><i class="fas fa-trash"></i> </a>
+                    <a href="/navigate/{{directory}}" class="btn btn-primary"><i class="fas fa-folder-open"></i> </a>
+                    <a href="/delete/{{directory}}" class="btn btn-danger"><i class="fas fa-trash"></i> </a>
                     <a href="/rename/{{directory}}" class="btn btn-warning"><i class="fas fa-edit"></i> </a>
                     {% comment %} <a href="" class="btn btn-primary">Download</a>
                     <a href="" class="btn btn-danger">Delete</a> {% endcomment %}
@@ -46,5 +46,5 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="/create_directory/{{directory}}" class="btn btn-primary">Create Directory</a>
+    <a href="/create_directory" class="btn btn-primary">Create Directory</a>
 </div>

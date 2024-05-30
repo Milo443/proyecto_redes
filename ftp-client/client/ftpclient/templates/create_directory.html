@@ -1,0 +1,16 @@
+{% include "components/navbar.html" %}
+
+
+
+<br>
+
+
+
+<form method="POST" action="{% url 'create_directory' %}" class="form-inline">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="directory">Directory Name:</label>
+        <input type="text" class="form-control" id="directory" name="directory">
+    </div>
+    <button type="submit" class="btn btn-primary">Create Directory</button>
+</form>
