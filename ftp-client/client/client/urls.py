@@ -37,6 +37,8 @@ urlpatterns = [
 
     path('rename/<str:file>', views.rename, name='rename'),
     path('create_directory/', views.create_directory, name='create_directory'),
+    
+
     #path('navigate/<str:directory>', views.navigate, name='navigate'),
     path('directory/<str:directory>', views.directory, name='directory'),
 
